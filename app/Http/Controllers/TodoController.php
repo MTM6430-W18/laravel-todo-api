@@ -7,6 +7,7 @@ use App\Category;
 use App\Http\Resources\TodoResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class TodoController extends Controller
 {
@@ -41,6 +42,7 @@ class TodoController extends Controller
             'user_id' => Auth::id()
             ]
         );
+        var_dump($todo);
 
         return new TodoResource($todo->load(['category', 'priority']));
     }

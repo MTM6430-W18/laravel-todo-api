@@ -37,7 +37,8 @@ class TodoController extends Controller
             'description' => $request->description ?? null,
             'priority_id' => $request->priority,
             'category_id' => $request->category ?? null,
-            'due_at' => new Carbon($request->dueAt)
+            'due_at' => new Carbon($request->dueAt),
+            'user_id' => Auth::id()
             ]
         );
 

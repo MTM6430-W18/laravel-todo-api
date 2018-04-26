@@ -42,7 +42,6 @@ class TodoController extends Controller
             'user_id' => Auth::id()
             ]
         );
-        var_dump($todo);
 
         return new TodoResource($todo->load(['category', 'priority']));
     }

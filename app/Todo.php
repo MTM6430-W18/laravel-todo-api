@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+
 use App\Scopes\UserScope;
 use Illuminate\Database\Eloquent\Model;
 use phpDocumentor\Reflection\Types\Boolean;
@@ -46,36 +47,46 @@ class Todo extends Model
         'deleted_at'
     ];
 
+    /**
+     * Specify the relations to eager load when returning a model instance
+     *
+     * @var array
+     */
     protected $with = ['priority', 'category'];
 
+    /**
+     * Specify the virtual attributes to include when returning a model instance
+     *
+     * @var array
+     */
     protected $appends = ['is_complete'];
 
     /**
      * Get the user to which the Todo has been assigned.
-     * 
+     *
      * @return Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function user() 
+    public function user()
     {
         return $this->belongsTo('App\User');
     }
 
     /**
      * Get the category to which the Todo has been assigned.
-     * 
+     *
      * @return Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function category() 
+    public function category()
     {
         return $this->belongsTo('App\Category');
     }
 
     /**
      * Get the priorty to which the Todo has been assigned.
-     * 
+     *
      * @return Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function priority() 
+    public function priority()
     {
         return $this->belongsTo('App\Priority');
     }
